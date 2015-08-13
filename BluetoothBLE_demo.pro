@@ -3,7 +3,8 @@ TEMPLATE = app
 QT += qml quick widgets bluetooth
 
 SOURCES += main.cpp \
-    src/bluetoothdevice.cpp
+    src/bluetoothdevice.cpp \
+    src/deviceinfo.cpp
 
 RESOURCES += qml.qrc
 
@@ -14,4 +15,5 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    src/bluetoothdevice.h
+    src/bluetoothdevice.h \
+    src/deviceinfo.h

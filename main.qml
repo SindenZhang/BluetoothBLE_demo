@@ -12,8 +12,7 @@ ApplicationWindow {
 BluetoothDevice{
     id: m_BluetoothDevice
 }
- MouseArea{
-     anchors.fill: parent
-     onClicked: m_BluetoothDevice.stopDeviceDiscovery()
- }
+BluetoothDeviceView{
+    anchors.fill: parent
+}
 }

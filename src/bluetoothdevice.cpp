@@ -1,4 +1,5 @@
 #include "bluetoothdevice.h"
+#include "deviceinfo.h"
 #include <QTime>
 #include <QDebug>
 BluetoothDevice::BluetoothDevice(QObject *parent) : QObject(parent)
@@ -23,6 +24,11 @@ BluetoothDevice::~BluetoothDevice()
 
 }
 
+QVariant BluetoothDevice::getDevices()
+{
+    return QVariant::fromValue(m_devices);
+}
+
 void BluetoothDevice::startDeviceDiscovery()
 {
 
@@ -36,6 +42,9 @@ void BluetoothDevice::stopDeviceDiscovery()
 void BluetoothDevice::appendDeviceList(const QBluetoothDeviceInfo &info)
 {
     qDebug() << info.name() << QTime::currentTime().toString();
+    DeviceInfo *d = new DeviceInfo(info);
+    m_devices.append(d);
+    emit devicesUpdated();
 }
 
 void BluetoothDevice::deviceScanError(QBluetoothDeviceDiscoveryAgent::Error error)
